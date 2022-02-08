@@ -1,0 +1,11 @@
+bin/
+build/
+.idea/
+cmake-*/
+mot_benchmark/
+output/
+.vscode/
+*.mp4
+*.avi
+*.jpg
+./data/*.txt
