@@ -11,19 +11,15 @@ https://github.com/saebyn/munkres-cpp
 - 3090 RTX GPU
 
 ## Build Docker Image
-- intflow/edgefarm:jp45_nx_boost176_cmake317_NumCpp
+- --:jp45_nx_boost176_cmake317_NumCpp
 
 ## Docker run
 ```bash
 #!/bin/bash
 container_name="cannonvirus_test_docker"
-docker_image="intflow/edgefarm:jp45_nx_boost176_cmake317_NumCpp"
+docker_image="--:jp45_nx_boost176_cmake317_NumCpp"
 
 xhost +
-
-#Mount Data folders
-sudo mkdir /DL_data_big
-sudo mount 192.168.0.18:/DL_data_big /DL_data_big
 
 docker run \
 --name=${container_name} \
