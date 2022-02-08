@@ -1,9 +1,6 @@
 #!/bin/bash
 container_name="cannonvirus_test_docker"
-docker_image="intflow/edgefarm:jp45_nx_boost176_cmake317_NumCpp"
-
-#sudo mkdir /DL_data_big
-#sudo mount 192.168.0.18:/DL_data_big /DL_data_big
+docker_image="--"
 
 xhost +
 
