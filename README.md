@@ -46,12 +46,6 @@ apt-get install build-essential gdb
 ## Python info 
 - -b cow_tr3_r18_neck_Rsort https://github.com/intflow/nvidia-odtk-workspace.git
 
-## Demo:
-- 예시사진(추후 변경 예정)
-![Screenshot-1](docs/1.png)
-
-To run the tracker with the provided detections and visualize the results:
-
 1. Nas server 안에 있는 pig data 사용
     ```bash
     /DL_data_big/EdgeFarm_pig/SL/piglet/img_per_10frame/1

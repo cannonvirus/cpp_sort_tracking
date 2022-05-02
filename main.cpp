@@ -116,7 +116,7 @@ int main(int argc, const char *argv[])
 
     //* ANCHOR config parser -----------------------------------------------
     //? Change path for yolo Auto-labeling path
-    CConfigParser config("/works/YOLOXOAD/tools/config.ini");
+    CConfigParser config("/works/cpp_sort_tracking/config.ini");
     // CConfigParser config("/works/YOLOX/tools/config.ini");
     //* -------------------------------------------------------------
 
@@ -134,7 +134,7 @@ int main(int argc, const char *argv[])
     Tracker tracker;
     cv::Mat img;
 
-    cv::VideoWriter video(config.GetString("video_output_path"), cv::VideoWriter::fourcc('X', '2', '6', '4'), 20, cv::Size(config.GetInt("s_video_width"), config.GetInt("s_video_height")));
+    cv::VideoWriter out_video(config.GetString("video_output_path"), cv::VideoWriter::fourcc('X', '2', '6', '4'), 20, cv::Size(config.GetInt("s_video_width"), config.GetInt("s_video_height")));
 
     clock_t current_ticks, delta_ticks;
     clock_t fps = 0;
@@ -162,7 +162,7 @@ int main(int argc, const char *argv[])
             ofile.close();
             if (config.GetBool("video_write"))
             {
-                video.release();
+                out_video.release();
             }
             cout << "[M-FPS] : " << total_FPS / i << endl;
             break;
@@ -250,7 +250,7 @@ int main(int argc, const char *argv[])
         {
             cv::Mat resized_img;
             cv::resize(img, resized_img, cv::Size(config.GetInt("s_video_width"), config.GetInt("s_video_height")), 0, 0, cv::INTER_CUBIC);
-            video.write(resized_img);
+            out_video.write(resized_img);
         }
 
         //* Stop 조건
@@ -259,7 +259,7 @@ int main(int argc, const char *argv[])
             if (i == config.GetInt("stop_frame"))
             {
                 if (config.GetBool("video_write"))
-                    video.release();
+                    out_video.release();
                 break;
             }
         }

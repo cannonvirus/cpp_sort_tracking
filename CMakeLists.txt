@@ -3,6 +3,8 @@ project("sort-cpp" VERSION 1.0)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+SET(CPACK_PROJECT_NAME ${PROJECT_NAME})
+SET(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 # set (CUDA_PROPAGATE_HOST_FLAGS ON)
 # set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} nvcc -Wno-deprecated-gpu-targets -arch=sm_35 -rdc=true -std=c++11 -Xcompiler -mcmodel=medium" )
 
@@ -25,12 +27,6 @@ endif()
 
 # find_package(CUDA 11.1 REQUIRED)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-# include_directories(${CUDA_INCLUDE_DIRS})
-# link_directories(${CUDA_LIBRARY_DIRS})
-
-file(GLOB SOURCE_FILES src/*.cpp)
-
 ## .so 파일로 만드는 코드 main.cpp 빼고 사용 // error 나지만, .so파일은 생성됨.
 # add_library(tracker SHARED ${SOURCE_FILES})
 
@@ -39,18 +35,12 @@ file(GLOB SOURCE_FILES src/*.cpp)
 
 
 # 실행파일 만드는 코드 main 함수가 필수
-set(OUTPUT_EXEC "${CMAKE_PROJECT_NAME}_app")
-add_executable(${OUTPUT_EXEC} ${SOURCE_FILES})
+include_directories(${PROJECT_SOURCE_DIR}/include)
+file(GLOB SOURCE_FILES src/*.cpp)
+
+add_executable(${PROJECT_NAME} main.cpp ${SOURCE_FILES})
+
 target_link_libraries (
-        ${OUTPUT_EXEC}
+        ${CMAKE_PROJECT_NAME}
         ${OpenCV_LIBS}
 )
-
-
-# tracker 옆에 {OUTPUT_EXEC} 항목 추가 (,) 안써야 함
-# install(TARGETS tracker
-#         RUNTIME DESTINATION bin
-#         LIBRARY DESTINATION lib
-#         ARCHIVE DESTINATION lib
-#         PUBLIC_HEADER DESTINATION include
-#         )
