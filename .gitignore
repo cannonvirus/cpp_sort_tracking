@@ -9,3 +9,4 @@ output/
 *.avi
 *.jpg
 ./data/*.txt
+*.zip

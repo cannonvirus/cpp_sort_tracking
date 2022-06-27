@@ -4,11 +4,8 @@ C++ implementation of SORT: Simple, online, and real-time tracking of multiple o
 Kuhn-Munkres (Hungarian) Algorithm in C++ is forked from:
 https://github.com/saebyn/munkres-cpp
 
-## Dependencies
-- Ubuntu 18.04
-- OpenCV 4.2
-- Boost 1.58.0 or up
-- 3090 RTX GPU
+## data
+https://www.notion.so/cannonvirus/1999fdd84440402882eb5e81ae652d79
 
 ## Build Docker Image
 - --:jp45_nx_boost176_cmake317_NumCpp
